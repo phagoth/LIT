@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20150919195101) do
   create_table "users", force: :cascade do |t|
     t.string   "first_name",             default: "", null: false
     t.string   "last_name",              default: "", null: false
-    t.date     "birthdate",                           null: false
+    t.date     "birthdate"
     t.string   "phone",                  default: "", null: false
     t.string   "login",                  default: "", null: false
     t.string   "email",                  default: "", null: false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20150919195101) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["login"], name: "index_users_on_login", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

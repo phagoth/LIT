@@ -4,30 +4,30 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :last_name %><br />
+    <%= f.label :last_name, "Фамилия" %><br />
     <%= f.text_field :last_name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :first_name %><br />
+    <%= f.label :first_name, "Имя" %><br />
     <%= f.text_field :first_name %>
   </div>
 
   <div class="field">
-    <%= f.label :login %><br />
+    <%= f.label :login, "Логин" %><br />
     <%= f.text_field :login %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password, "Пароль" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> символов минимум)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "Подтверждение пароля" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
@@ -37,13 +37,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :birthdate %><br />
+    <%= f.label :birthdate, "Дата рождения" %><br />
     <%= f.date_field :birthdate %>
   </div>
 
   <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.date_field :phone %>
+    <%= f.label :phone, "Телефон" %><br />
+    <%= f.text_field :phone %>
   </div>
 
   <div class="actions">

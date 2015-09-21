@@ -3,7 +3,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table(:users) do |t|
       t.string :first_name,         null: false, default: ""
       t.string :last_name,          null: false, default: ""
-      t.date   :birthdate,          null: false
+      t.date   :birthdate
       t.string :phone,              null: false, default: ""
       ## Database authenticatable
       t.string :login,              null: false, default: ""
@@ -39,6 +39,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.timestamps null: false
     end
 
+    add_index :users, :login,                unique: true
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
     # add_index :users, :confirmation_token,   unique: true
