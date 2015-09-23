@@ -16,7 +16,7 @@
       <ul class="nav navbar-nav pull-right">
         <li>
           <%= link_to  edit_user_registration_path do %>
-            <img alt="@phagoth" class="avatar" src="https://avatars3.githubusercontent.com/u/12942808?v=3&amp;s=40">
+            <%= image_tag(current_user.avatar.url(:thumb), class: "avatar") %>
             <%= current_user.display_name %>
           <% end -%>
         </li>
