@@ -1,64 +1,66 @@
-<h2>Редактирование пользователя</h2>
+<div class="aligned-center">
+  <h2>Редактирование пользователя</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :last_name, "Фамилия" %><br />
-    <%= f.text_field :last_name, autofocus: true %>
-  </div>
+    <div class="form-group">
+      <%= f.label :last_name, "Фамилия" %><br />
+      <%= f.text_field :last_name, class: "form-control", autofocus: true %>
+    </div>
 
-  <div class="field">
-    <%= f.label :first_name, "Имя" %><br />
-    <%= f.text_field :first_name %>
-  </div>
+    <div class="form-group">
+      <%= f.label :first_name, "Имя" %><br />
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :login, "Логин" %><br />
-    <%= f.text_field :login %>
-  </div>
+    <div class="form-group">
+      <%= f.label :login, "Логин" %><br />
+      <%= f.text_field :login, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
-  </div>
+    <div class="form-group">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, class: "form-control" %>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :birthdate, "Дата рождения" %><br />
+      <%= f.date_field :birthdate, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :phone, "Телефон" %><br />
+      <%= f.text_field :phone, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password, "Новый пароль" %> <i>(оставьте пустым, если не хотите менять)</i><br />
+      <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation, "Подтверждение пароля" %><br />
+      <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :current_password, "Текущий пароль" %> <i>(введите текущий пароль для подтверждения изменений)</i><br />
+      <%= f.password_field :current_password, class: "form-control", autocomplete: "off" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "Сохранить", class: "btn btn-lg btn-primary" %>
+    </div>
   <% end %>
+  <%= link_to "Назад", :back %>
+  <hr>
+  <h3>Удалить аккаунт</h3>
 
-  <div class="field">
-    <%= f.label :birthdate, "Дата рождения" %><br />
-    <%= f.date_field :birthdate %>
-  </div>
+  <p>Недовольны? <%= button_to "Да, удалите мой аккаунт", registration_path(resource_name), class: "btn btn-lg btn-danger", data: { confirm: "Вы уверены?" }, method: :delete %></p>
 
-  <div class="field">
-    <%= f.label :phone, "Телефон" %><br />
-    <%= f.text_field :phone %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, "Новый пароль" %> <i>(оставьте пустым, если не хотите менять)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Подтверждение пароля" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password, "Текущий пароль" %> <i>(введите текущий пароль для подтверждения изменений)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Сохранить" %>
-  </div>
-<% end %>
-
-<h3>Удалить аккаунт</h3>
-
-<p>Недовольны? <%= button_to "Да, удалите мой аккаунт", registration_path(resource_name), data: { confirm: "Вы уверены?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

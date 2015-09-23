@@ -7,35 +7,45 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="navbar-inner">
-      <div id="logo" class="navbar-brand">
-          <%= link_to root_path do%>
-            <span class="glyphicon glyphicon-home"></span>
+  <header class="navbar navbar-fixed-top orange-gradient" role="navigation">
+    <ul class="nav navbar-nav navbar-left">
+        <li><%= link_to 'Главная', root_path %></li>
+        <li><%= link_to 'Контакты', contacts_index_path %></li>
+    </ul>
+    <% if user_signed_in? %>
+      <ul class="nav navbar-nav pull-right">
+        <li>
+          <%= link_to  edit_user_registration_path do %>
+            <img alt="@phagoth" class="avatar" src="https://avatars3.githubusercontent.com/u/12942808?v=3&amp;s=40">
+            <%= current_user.display_name %>
           <% end -%>
-      </div>
-      <nav class="collapse navbar-collapse navbar-ex1-collapse">
-        <% if user_signed_in? %>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to current_user.display_name, edit_user_registration_path %></li>
-            <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></li>
-          </ul>
-        <% else %>
-          <ul class="nav navbar-nav pull-right">
-            <li><%= link_to 'Регистрация', new_user_registration_path %></li>
-            <li><%= link_to 'Войти', new_user_session_path %></li>
-          </ul>
-        <% end %>
-      </nav>
-    </div>
+        </li>
+        <li><%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></li>
+      </ul>
+    <% else %>
+      <ul class="nav navbar-nav pull-right">
+        <li><%= link_to 'Регистрация', new_user_registration_path %></li>
+        <li><%= link_to 'Войти', new_user_session_path %></li>
+      </ul>
+    <% end %>
   </header>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-  <div class="container">
+  <div class="main-container">
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
+    <% end -%>
+    <% if alert %>
+      <p class="alert"><%= alert %></p>
+    <% end -%>
     <%= yield %>
   </div>
 
+  <footer class="navbar navbar-fixed-bottom orange-gradient">
+    <div>
+      <h6 class="navbar-text navbar-left">&copy;2015 
+         <a href="https://ua.linkedin.com/in/alexaveryanov" class="navbar-link">Александр Аверьянов</a>
+      </h6>
+   </div>
+  </footer>
 </body>
 </html>

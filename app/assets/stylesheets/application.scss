@@ -1,0 +1,88 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$dark_orange: #F7941D;
+$light_orange: #F9BB42;
+
+.orange-gradient {
+  background: -webkit-linear-gradient( $dark_orange, $light_orange );
+  background:    -moz-linear-gradient( $dark_orange, $light_orange );
+  background:     -ms-linear-gradient( $dark_orange, $light_orange );
+  background:      -o-linear-gradient( $dark_orange, $light_orange );
+  background:         linear-gradient( $dark_orange, $light_orange );
+}
+
+body {
+  background-image: image-url('background.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  padding: 50px 0;
+}
+
+hr {
+  border-color: $dark_orange;
+}
+.navbar {
+  border: none;
+  .avatar {
+    margin-top: -20px;
+    margin-bottom: -20px;
+    margin-right: 10px;
+    height: 40px;
+    width: 40px;
+  }
+}
+
+.nav {
+  li {
+    a {
+      &:focus, &:hover {
+        background-color: $light_orange;
+      }
+    }
+  }
+}
+
+.navbar, .main-container {
+  margin: 0 15%;
+}
+
+.main-container {
+  background: rgba(250, 250, 250, .85);
+  padding: 1em;
+}
+
+.photobox {
+  img {
+    border: 3px double $dark_orange;
+    max-width: 150px;
+  }
+}
+
+.aligned-center {
+  text-align: center;
+}
+
+.form-control{
+  &:focus {
+    border-color: $dark_orange;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(247,148,29, 0.6);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(247,148,29, 0.6);
+    }
+}
