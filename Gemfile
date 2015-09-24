@@ -27,6 +27,7 @@ gem 'devise', '~> 3.5.2'
 gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'paperclip', '~> 4.3.1'
 gem 'recaptcha', '~> 0.4.0'
+gem 'date_validator', '~> 0.8.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
