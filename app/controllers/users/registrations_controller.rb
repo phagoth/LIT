@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
-    has_error = false
+    has_error = 0
 
     if verify_recaptcha
       resource.save
@@ -27,16 +27,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
           respond_with resource, location: after_inactive_sign_up_path_for(resource)
         end
       else
-        has_error = true
+        has_error = 1 # persistance error
       end
     else
-      has_error = true
+      has_error = 2 # recaptcha error
     end
 
-    if has_error
+    if has_error > 0
       clean_up_passwords resource
-      flash.now[:alert] = "There was an error with the recaptcha."      
-      flash.delete :recaptcha_error
+      if has_error == 2
+        flash.now[:alert] = "There was an error with the recaptcha."      
+        flash.delete :recaptcha_error
+      end
       set_minimum_password_length
       respond_with resource
     end
